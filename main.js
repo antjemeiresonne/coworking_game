@@ -34,6 +34,34 @@ class KitchenQuest{
                 console.log("invalid key pressed")
         }
     }
+    generateIngredient(){
+        const ingredient = document.createElement('div');
+        ingredient.classList.add('ingredient');
+        const randomX = Math.floor(Math.random() * (this.container.offsetWidth - 3));
+        const randomY = Math.floor(Math.random() * (this.container.offsetHeight - 3));
+        ingredient.style.left = `${randomX}rem`;
+        ingredient.style.top = `${randomY}rem`;
+        this.container.appendChild(ingredient);
+    }
+    isColliding(element1, element2){
+        const bound1 = element1.getBoundingClientRect();
+        const bound2 = element2.getBoundingClientRect();
+        return !(bound1.right < bound2.left || 
+            bound1.left > bound2.right || 
+            bound1.bottom < bound2.top || 
+            bound1.top > bound2.bottom);
+    }
+
+    checkCollision(){
+        const ingredients = document.querySelectorAll('.ingredient');
+        ingredients.forEach(ingredient => {
+            if (this.isColliding(this.chef, ingredient)) {
+                ingredient.remove();
+                this.score++;
+                //maybe update score display in html? or can we connect this to this.score and do it automatically?
+            }
+        })
+    }
 }
 
 const kitchenQuest = new KitchenQuest('spelernaam', 'chef', 'container');
