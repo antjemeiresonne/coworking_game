@@ -17,8 +17,9 @@
     height: 30px;
     background-color: red; /* Or an image of a chef */
     position: absolute;
+}
 .container{
-
+    background-color: #FDE0CE;
 }
 
 header {
@@ -30,7 +31,7 @@ header {
     z-index: 999;
 }
 
-header a{
+header a {
     padding-right: 40rem;
     font-weight: bold;
     font-size: 30px;
@@ -38,8 +39,17 @@ header a{
 }
 
 header img{
-    background-image: url(./images/bergHoff_logo.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-color: transparent;
+
 }
+
+.selector {
+    background-image: url(./images/floorplan.png);
+}
+
+.floorplan img{
+    width: 100vw;
+    height: 100vh;
+    margin-top: 100px;
+}
+
+
