@@ -23,33 +23,31 @@
 }
 
 header {
-    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: #DFE6DD;
     color: #000000;
-    margin-top: -1.8rem;
-    width: 100%;
-    z-index: 999;
+
 }
+
 
 header a {
-    padding-right: 40rem;
     font-weight: bold;
     font-size: 30px;
-    text-align: center;
+    margin-right: 15rem;
 }
 
-header img{
-
-}
-
-.selector {
+.floorplan {
     background-image: url(./images/floorplan.png);
+    height: 55rem;
+    width: 100rem;
 }
 
-.floorplan img{
-    width: 100vw;
-    height: 100vh;
-    margin-top: 100px;
-}
+
+
+
+
+
 
 
