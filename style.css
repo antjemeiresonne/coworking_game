@@ -1,0 +1,26 @@
+.container{
+
+}
+
+header {
+    position: fixed;
+    background-color: #DFE6DD;
+    color: #000000;
+    margin-top: -1.8rem;
+    width: 100%;
+    z-index: 999;
+}
+
+header a{
+    padding-right: 40rem;
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+}
+
+header img{
+    background-image: url(./images/bergHoff_logo.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: transparent;
+}
