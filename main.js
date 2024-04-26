@@ -11,11 +11,33 @@ class KitchenQuest{
         //walking speed chef
         this.speed = 1;
     }
-    startgame(){
+    playGame(){
         document.addEventListener('keydown', (event) => this.walk(event));
+        //show rules and hide them if start playing is clicked
+        this.showRules();
+        const rules = document.querySelector('BUTTONPLAYGAME')
+        rules.addEventListener('click',this.startGame);
     }
-    //chef walking around
+    startGame(){
+        //let player pick a recipe (maybe linked to levels? harder recipies, harder level?)
+        //timer starts
+        //let player get pots and pans from pantry. berghoff pots and pans return more points
+        //ingredients start spawning, player must get them before they disappear after x seconds, catching an ingredient earns points
+        //timer ends after x time, it's not relevant if the player is ready or not
+        //total score and wheel of fortune appears on screen, player can spin it. each spin costs x points.
+    }
+    showRules(){
+        //show overlay with rules(at the start of the game)
+    }
+    hideRules(){
+        //hide overlay rules if start playing button is clicked
+    }
+    startTimer(){
+        //start timer and put it on the screen in the html
+    }
+
     walk(event){
+        //chef walking around
         switch (event.key){
             case 'ArrowUp':
                 //moves chef up by *speed* rem
@@ -43,6 +65,7 @@ class KitchenQuest{
         ingredient.style.top = `${randomY}rem`;
         this.container.appendChild(ingredient);
     }
+    
     isColliding(element1, element2){
         const bound1 = element1.getBoundingClientRect();
         const bound2 = element2.getBoundingClientRect();
@@ -62,8 +85,23 @@ class KitchenQuest{
             }
         })
     }
+    generateObstacle(){
+        //code to make random things go wrong in the kitchen (turn on faucet, lid off pot etc)
+        //each obstacle should have a unique id so it can be fixed seperately and an event listener so it can be clicked
+        //while object is displayed, score should go down
+    }
+    fixObstacle(){
+        //if obstacle is clicked, it should be fixed (removed and add score to scoreboard)
+    }
+
+    showWheel(){
+        //code to show the wheel
+    }
+    turnWheel(){
+        //code to make the wheel turn
+    }
 }
 
 const kitchenQuest = new KitchenQuest('spelernaam', 'chef', 'game-container');
-kitchenQuest.startgame();
+kitchenQuest.playGame();
 })();
