@@ -11,9 +11,14 @@ class KitchenQuest{
         //walking speed chef
         this.speed = 1;
     }
-    startgame(){
+    playGame(){
         document.addEventListener('keydown', (event) => this.walk(event));
         //show rules and hide them if start playing is clicked
+        this.showRules();
+        const rules = document.querySelector('BUTTONPLAYGAME')
+        rules.addEventListener('click',this.startGame);
+    }
+    startGame(){
         //let player pick a recipe (maybe linked to levels? harder recipies, harder level?)
         //timer starts
         //let player get pots and pans from pantry. berghoff pots and pans return more points
@@ -26,6 +31,9 @@ class KitchenQuest{
     }
     hideRules(){
         //hide overlay rules if start playing button is clicked
+    }
+    startTimer(){
+        //start timer and put it on the screen in the html
     }
 
     walk(event){
@@ -95,5 +103,5 @@ class KitchenQuest{
 }
 
 const kitchenQuest = new KitchenQuest('spelernaam', 'chef', 'game-container');
-kitchenQuest.startgame();
+kitchenQuest.playGame();
 })();
