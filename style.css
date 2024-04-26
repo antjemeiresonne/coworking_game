@@ -1,0 +1,20 @@
+/*ROOT*/
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/*BASIC ELEMENTS IN GAME*/
+#game-container {
+    width: 400px;
+    height: 400px;
+    border: 2px solid #000;
+    position: relative;
+}
+
+#chef {
+    width: 30px;
+    height: 30px;
+    background-color: red; /* Or an image of a chef */
+    position: absolute;
+}
