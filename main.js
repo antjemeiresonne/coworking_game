@@ -9,7 +9,7 @@ class KitchenQuest{
         this.container = document.getElementById(`${container}`);
         this.score = 0;
         //walking speed chef
-        this.speed = 20;
+        this.speed = 1;
     }
     startgame(){
         document.addEventListener('keydown', (event) => this.walk(event));
@@ -18,7 +18,7 @@ class KitchenQuest{
     walk(event){
         switch (event.key){
             case 'ArrowUp':
-                //moves chef up by *speed* rem, diminishes the position of chef and the top of the parent element by 5 rem
+                //moves chef up by *speed* rem
                 this.chef.style.top = `${Math.max(0, this.chef.offsetTop - this.speed)}rem`;
                 break;
             case 'ArrowDown':
@@ -64,6 +64,6 @@ class KitchenQuest{
     }
 }
 
-const kitchenQuest = new KitchenQuest('spelernaam', 'chef', 'container');
+const kitchenQuest = new KitchenQuest('spelernaam', 'chef', 'game-container');
 kitchenQuest.startgame();
 })();
