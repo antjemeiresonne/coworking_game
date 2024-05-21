@@ -44,6 +44,15 @@ header a {
     height: 55rem;
     width: 100rem;
 }
+/*
+.obstacle {
+    width: 30px;
+    height: 30px;
+    background-image: url('./images/obstacle.png');  //Dit is de CSS-image voor het obstacle
+    background-size: cover;
+    position: absolute;
+}
+*/
 
 
 

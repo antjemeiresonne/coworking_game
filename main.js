@@ -86,13 +86,33 @@ class KitchenQuest{
         })
     }
     generateObstacle(){
-        //code to make random things go wrong in the kitchen (turn on faucet, lid off pot etc)
-        //each obstacle should have a unique id so it can be fixed seperately and an event listener so it can be clicked
-        //while object is displayed, score should go down
+        const obstacle = document.createElement('div');
+        // Obstakel toevoegen aan de div
+        obstacle.classList.add('obstacle');
+
+        // Genereer random coordinates voor het obstakel in de image
+        const randomX = Math.floor(Math.random() * (this.container.offsetWidth - 30));
+        const randomY = Math.floor(Math.random() * (this.container.offsetHeight - 30));
+
+        // Set de positie van het obstakel using de gegenereerde coordinaten
+        obstacle.style.left = `${randomX}px`;
+        obstacle.style.top = `${randomY}px`;
+
+        // Voeg het obstakel toe aan de image
+        this.container.appendChild(obstacle);
+
+
     }
     fixObstacle(){
-        //if obstacle is clicked, it should be fixed (removed and add score to scoreboard)
+        // Voeg een event listener om het obstakel te verwijderen
+        obstacle.addEventListener('click', () => {
+            obstacle.remove();
+
+            this.score++;
+        });
     }
+
+
 
     showWheel(){
         //code to show the wheel
