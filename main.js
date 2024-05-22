@@ -1,7 +1,3 @@
-'use strict';
-
-(function(){
-
 class KitchenQuest{
     constructor(spelernaam, chef, container){
         this.spelernaam = spelernaam;
@@ -124,4 +120,3 @@ class KitchenQuest{
 
 const kitchenQuest = new KitchenQuest('spelernaam', 'chef', 'game-container');
 kitchenQuest.playGame();
-})();
