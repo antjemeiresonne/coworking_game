@@ -53,16 +53,26 @@ footer{
     padding: 3rem 0;
 }
 
+/*LAYERING OF ELEMENTS/GRID START*/
+.wrapper{
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: 1rem;
+    grid-auto-rows: minmax(5rem,auto);
+    height: 100vh;
+    align-items: center;
+}
+
 /*BASIC ELEMENTS IN GAME*/
 #game-container {
-    width: 90vh;
-    height: 80vh;
+    height: 38rem;
     border: 2px solid var(--black);
     position: relative;
     background-image: url(./images/kitchen.png);
     background-repeat: no-repeat;
     background-size: contain;
-    margin: auto;
+    grid-column: 3 / 8;
+    align-self: baseline;
 }
 
 #chef {
@@ -70,14 +80,6 @@ footer{
     height: 30px;
     background-color: red; /* Or an image of a chef */
     position: absolute;
-}
-
-/*LAYERING OF ELEMENTS*/
-.wrapper{
-    display: grid;
-    grid-template-columns: repeat(9, 1fr);
-    gap: 1rem;
-    grid-auto-rows: minmax(5rem,auto);
 }
 
 
