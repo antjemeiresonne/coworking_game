@@ -73,12 +73,15 @@ footer{
     background-size: contain;
     grid-column: 3 / 8;
     align-self: baseline;
+    padding: 9rem;
 }
 
 #chef {
-    width: 30px;
-    height: 30px;
-    background-color: red; /* Or an image of a chef */
+    width: 4rem;
+    height: 6rem;
+    background-image: url(./images/chef.png);
+    background-repeat: no-repeat;
+    background-size: contain;
     position: absolute;
 }
 
