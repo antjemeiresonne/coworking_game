@@ -1,5 +1,5 @@
-class KitchenQuest{
-    constructor(spelernaam, chef, container){
+class KitchenQuest {
+    constructor(spelernaam, chef, container) {
         this.spelernaam = spelernaam;
         this.chef = document.getElementById(`${chef}`);
         this.container = document.getElementById(`${container}`);
@@ -7,14 +7,14 @@ class KitchenQuest{
         //walking speed chef
         this.speed = 1;
     }
-    playGame(){
+    playGame() {
         document.addEventListener('keydown', (event) => this.walk(event));
         //show rules and hide them if start playing is clicked
         this.showRules();
         const rules = document.querySelector('BUTTONPLAYGAME')
-        rules.addEventListener('click',this.startGame);
+        rules.addEventListener('click', this.startGame);
     }
-    startGame(){ 
+    startGame() {
         //let player pick a recipe (maybe linked to levels? harder recipies, harder level?)
         //timer starts
         //let player get pots and pans from pantry. berghoff pots and pans return more points
@@ -22,56 +22,64 @@ class KitchenQuest{
         //timer ends after x time, it's not relevant if the player is ready or not
         //total score and wheel of fortune appears on screen, player can spin it. each spin costs x points.
     }
-    showRules(){
+    showRules() {
         //show overlay with rules(at the start of the game)
     }
-    hideRules(){
+    hideRules() {
         //hide overlay rules if start playing button is clicked
     }
-    startTimer(){
+    startTimer() {
         //start timer and put it on the screen in the html
     }
 
-    walk(event){
+    walk(event) {
         //chef walking around
-        switch (event.key){
+        switch (event.key) {
             case 'ArrowUp':
                 //moves chef up by *speed* rem
                 this.chef.style.top = `${Math.max(0, this.chef.offsetTop - this.speed)}rem`;
                 break;
             case 'ArrowDown':
-                this.chef.style.top = `${Math.min(this.container.offsetHeight - this.chef.offsetHeight, this.chef.offsetTop + this.speed)}rem`;                
+                this.chef.style.top = `${Math.min(this.container.offsetHeight - this.chef.offsetHeight, this.chef.offsetTop + this.speed)}rem`;
                 break;
             case 'ArrowLeft':
-                this.chef.style.left = `${Math.max(0, this.chef.offsetLeft - this.speed)}rem`;                
+                this.chef.style.left = `${Math.max(0, this.chef.offsetLeft - this.speed)}rem`;
                 break;
             case 'ArrowRight':
-                this.chef.style.left = `${Math.min(this.container.offsetWidth - this.chef.offsetWidth, this.chef.offsetLeft + this.speed)}rem`;                
+                this.chef.style.left = `${Math.min(this.container.offsetWidth - this.chef.offsetWidth, this.chef.offsetLeft + this.speed)}rem`;
                 break;
             default:
                 console.log("invalid key pressed")
         }
     }
-    generateIngredient(){
+    generateIngredient() {
         const ingredient = document.createElement('div');
         ingredient.classList.add('ingredient');
-        const randomX = Math.floor(Math.random() * (this.container.offsetWidth - 3));
-        const randomY = Math.floor(Math.random() * (this.container.offsetHeight - 3));
-        ingredient.style.left = `${randomX}rem`;
-        ingredient.style.top = `${randomY}rem`;
+        ingredient.style.width = '2rem';
+        ingredient.style.height = '2rem';
+        ingredient.style.position = 'absolute';
+        const imageCount = 8;
+        const randomImageIndex = Math.floor(Math.random() * imageCount) + 1;
+        const randomImage = `./images/ingredients/ing${randomImageIndex}.png`;
+        ingredient.style.backgroundImage = `url(${randomImage})`;
+        ingredient.style.backgroundSize = 'contain';
+        const randomX = Math.floor(Math.random() * (this.container.offsetWidth - 16));
+        const randomY = Math.floor(Math.random() * (this.container.offsetHeight - 16));
+        ingredient.style.left = `${randomX}px`;
+        ingredient.style.top = `${randomY}px`;
         this.container.appendChild(ingredient);
     }
-    
-    isColliding(element1, element2){
+
+    isColliding(element1, element2) {
         const bound1 = element1.getBoundingClientRect();
         const bound2 = element2.getBoundingClientRect();
-        return !(bound1.right < bound2.left || 
-            bound1.left > bound2.right || 
-            bound1.bottom < bound2.top || 
+        return !(bound1.right < bound2.left ||
+            bound1.left > bound2.right ||
+            bound1.bottom < bound2.top ||
             bound1.top > bound2.bottom);
     }
 
-    checkCollision(){
+    checkCollision() {
         const ingredients = document.querySelectorAll('.ingredient');
         ingredients.forEach(ingredient => {
             if (this.isColliding(this.chef, ingredient)) {
@@ -81,7 +89,7 @@ class KitchenQuest{
             }
         })
     }
-    generateObstacle(){
+    generateObstacle() {
         const obstacle = document.createElement('div');
         // Obstakel toevoegen aan de div
         obstacle.classList.add('obstacle');
@@ -99,7 +107,7 @@ class KitchenQuest{
 
 
     }
-    fixObstacle(){
+    fixObstacle() {
         // Voeg een event listener om het obstakel te verwijderen
         obstacle.addEventListener('click', () => {
             obstacle.remove();
@@ -110,13 +118,16 @@ class KitchenQuest{
 
 
 
-    showWheel(){
+    showWheel() {
         //code to show the wheel
     }
-    turnWheel(){
+    turnWheel() {
         //code to make the wheel turn
     }
 }
 
 const kitchenQuest = new KitchenQuest('spelernaam', 'chef', 'game-container');
+
+kitchenQuest.generateIngredient();
+
 kitchenQuest.playGame();
