@@ -14,7 +14,7 @@ class KitchenQuest{
         const rules = document.querySelector('BUTTONPLAYGAME')
         rules.addEventListener('click',this.startGame);
     }
-    startGame(){
+    startGame(){ 
         //let player pick a recipe (maybe linked to levels? harder recipies, harder level?)
         //timer starts
         //let player get pots and pans from pantry. berghoff pots and pans return more points
