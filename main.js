@@ -22,17 +22,13 @@ class KitchenQuest {
         //timer ends after x time, it's not relevant if the player is ready or not
         //total score and wheel of fortune appears on screen, player can spin it. each spin costs x points.
     }
-    showRules() {
-        //show overlay with rules(at the start of the game)
-    }
-    hideRules() {
-        //hide overlay rules if start playing button is clicked
-    }
+    
     startTimer() {
         //start timer and put it on the screen in the html
     }
 
     walk(event) {
+        //bijwerken naar zqsd
         //chef walking around
         switch (event.key) {
             case 'ArrowUp':
@@ -90,6 +86,9 @@ class KitchenQuest {
         })
     }
     generateObstacle() {
+        //ik heb elk obstacle-listitem een id gegeven met obstacle*nummer* (zie html) dus er een random uikiezen kan door een
+        //random nummer tussen 1 en 6 te genereren en dan het artikel te selecteren met document.queryselector(`li .obstacle${nummer}`)
+        //voeg gerust zelf css toe om te testen, ik doe later wel de definitieve! merci!
         const obstacle = document.createElement('div');
         // Obstakel toevoegen aan de div
         obstacle.classList.add('obstacle');
