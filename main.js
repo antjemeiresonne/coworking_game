@@ -63,8 +63,8 @@ class KitchenQuest {
         const randomImage = `./images/ingredients/ing${randomImageIndex}.png`;
         ingredient.style.backgroundImage = `url(${randomImage})`;
         ingredient.style.backgroundSize = 'contain';
-        const randomX = Math.floor(Math.random() * (this.container.offsetWidth - 16));
-        const randomY = Math.floor(Math.random() * (this.container.offsetHeight - 16));
+        const randomX = Math.floor(Math.random() * (this.container.offsetWidth - 48));
+        const randomY = Math.floor(Math.random() * (this.container.offsetHeight - 48));
         ingredient.style.left = `${randomX}px`;
         ingredient.style.top = `${randomY}px`;
         this.container.appendChild(ingredient);
@@ -127,7 +127,5 @@ class KitchenQuest {
 }
 
 const kitchenQuest = new KitchenQuest('spelernaam', 'chef', 'game-container');
-
-kitchenQuest.generateIngredient();
 
 kitchenQuest.playGame();
