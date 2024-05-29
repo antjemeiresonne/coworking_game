@@ -11,6 +11,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="./main.js" type="module"></script>
+
+    <!-- deze files zijn voor de overlay -->
+    <!--momenteel defer want deze file expoteert niks-->
+    <script src="overlay.js" defer></script>
+    <link rel="stylesheet" href="overlay.css">
+
 </head>
 
 <body>
@@ -25,6 +31,23 @@
             </nav>
         </header>
         <main>
+            <!--regels overlay-->
+            <button id="show-rulesknop">showrules</button>
+            <div id="spelregels" class="overlay">
+                <div class="overlay-content">
+                    <span id="closeOverlayBtnX" class="close-btn">&times;</span>
+                    <p class="overlay-titel">Play our game</p>
+                    <p>And win a discount</p>
+                    <p>use arrow keys to move</p>
+                    <br>
+                    <p>pick up ingredients and click on obstacles to fix them</p>
+                    <!-- eventueel nog extra uitleg -->
+                    <button id="closeOverlayBtnPlay" class="playButton">play</button>
+
+
+                </div>
+            </div>
+
             <div class="wrapper">
                 <div id="game-container">
                     <div id="chef"></div>
