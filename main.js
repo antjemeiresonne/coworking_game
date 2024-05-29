@@ -90,6 +90,7 @@ class KitchenQuest {
         })
     }
     generateObstacle() {
+        // aanpassen naar niet random dus de random functie mag eruit en wordt vervangen door een standaard spawnplaats.
         const obstacle = document.createElement('div');
         // Obstakel toevoegen aan de div
         obstacle.classList.add('obstacle');
