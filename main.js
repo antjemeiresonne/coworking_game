@@ -86,6 +86,7 @@ class KitchenQuest {
         })
     }
     generateObstacle() {
+        // aanpassen naar niet random dus de random functie mag eruit en wordt vervangen door een standaard spawnplaats.
         //ik heb elk obstacle-listitem een id gegeven met obstacle*nummer* (zie html) dus er een random uikiezen kan door een
         //random nummer tussen 1 en 6 te genereren en dan het artikel te selecteren met document.queryselector(`li .obstacle${nummer}`)
         //voeg gerust zelf css toe om te testen, ik doe later wel de definitieve! merci!
