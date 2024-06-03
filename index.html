@@ -10,6 +10,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="wheel.css">
+    <script src="./wheel.js" type="module"></script>
     <script src="./main.js" type="module"></script>
 
     <!-- deze files zijn voor de overlay -->
@@ -48,12 +50,27 @@
 
                 </div>
             </div>
+        <section class="luckywheel">
+            <button id="open-wheel-button" class="btn">Open Wheel </button>
+            <div id="wheel-container" class="overlay-container hidden">
+                <canvas id="wheel" width="600" height="600"></canvas>
+                <button id="spin-button" class="btn">Spin</button>
+                <button id="close-overlay-button" class="btn">Close</button>
+                <p id="spin-message" class="message hidden"></p>
+            </div>
+            <div id="result-container" class="overlay-container hidden">
+                <p id="result-text"></p>
+            </div>
+            <div id="congrats-container" class="overlay-container hidden">
+                <p id="congrats-text"></p>
+            </div>
 
             <div id="endGame" class="overlay">
                 <div class="overlay-content">
                     <p>Game Over</p>
                 </div>
             </div>
+        </section>
 
             <div class="wrapper">
                 <div id="game-container">

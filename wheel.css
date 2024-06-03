@@ -1,0 +1,54 @@
+.overlay-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    z-index: 9999;
+}
+
+.hidden {
+    display: none;
+}
+
+#wheel {
+    display: block;
+    margin: 0 auto;
+}
+.luckywheel .message {
+    color: red;
+    font-size: 14px;
+}
+
+
+.btn {
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.congrats-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(172, 172, 172, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    z-index: 10000;
+}
+#result-container {
+    visibility: hidden;
+}
+.luckywheel p {
+    color:white;
+    font-family: Inter, sans-serif;
+}

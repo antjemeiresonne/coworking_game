@@ -116,14 +116,6 @@ class KitchenQuest {
         });
     }
 
-
-
-    showWheel() {
-        //code to show the wheel
-    }
-    turnWheel() {
-        //code to make the wheel turn
-    }
 }
 
 const kitchenQuest = new KitchenQuest('spelernaam', 'chef', 'game-container');
