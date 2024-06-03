@@ -101,6 +101,30 @@ function stopRotateWheel() {
     congratsContainer.querySelector("#congrats-text").textContent = `Congratulations! You won ${prizeWon}!`;
     resultContainer.classList.remove('hidden');
     congratsContainer.classList.remove('hidden');
+    // Draw an arrow pointing to the winning segment
+function drawArrow() {
+    const centerX = canvas.width / 2;
+    const centerY = canvas.height / 2;
+    const radius = canvas.width / 2;
+    const arrowLength = 30; // Length of the arrow
+    const arrowWidth = 10; // Width of the arrow
+
+    ctx.save();
+    ctx.translate(centerX, centerY);
+    ctx.rotate(currentAngle + segmentAngle / 2); // Rotate to the center of the winning segment
+
+    // Draw the arrow
+    ctx.beginPath();
+    ctx.moveTo(0, -radius + arrowLength); // Start at the top of the wheel
+    ctx.lineTo(-arrowWidth / 2, -radius); // Draw left side of the arrow
+    ctx.lineTo(arrowWidth / 2, -radius); // Draw right side of the arrow
+    ctx.closePath();
+    ctx.fillStyle = "red"; // Set arrow color
+    ctx.fill();
+
+    ctx.restore();
+}
+
 }
 
 function easeOut(t, b, c, d) {
@@ -110,3 +134,4 @@ function easeOut(t, b, c, d) {
 }
 
 drawWheel();
+
