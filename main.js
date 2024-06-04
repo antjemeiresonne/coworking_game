@@ -134,7 +134,7 @@ class KitchenQuest {
 
             this.score++;
         });
-    }
+
 
 }
 
