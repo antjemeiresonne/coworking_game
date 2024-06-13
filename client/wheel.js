@@ -9,17 +9,6 @@ export const spinMessage = document.getElementById("spin-message");
 
 export let hasSpun = false;
 
-
-openWheelButton.addEventListener("click", () => {
-    wheelContainer.classList.remove("hidden");
-    openWheelButton.classList.add("hidden");
-});
-
-closeOverlayButton.addEventListener("click", () => {
-    wheelContainer.classList.add("hidden");
-    openWheelButton.classList.remove("hidden");
-});
-
 spinButton.addEventListener("click", () => {
     if (!hasSpun) {
         rotateWheel();
@@ -29,11 +18,6 @@ spinButton.addEventListener("click", () => {
         spinMessage.classList.remove("hidden");
 
 }});
-
-
-closeCongratsButton.addEventListener("click", () => {
-    congratsContainer.classList.add("hidden");
-});
 
 export const canvas = document.getElementById("wheel");
 export const ctx = canvas.getContext("2d");

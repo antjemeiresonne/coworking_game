@@ -12,7 +12,6 @@ class KitchenQuest {
 
     playGame() {
         document.addEventListener('keydown', (event) => this.walk(event));
-        this.showRules();
         const rules = document.querySelector('.BUTTONPLAYGAME');
         if (rules) {
             rules.addEventListener('click', () => this.startGame());
