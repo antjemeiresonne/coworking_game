@@ -1,24 +1,13 @@
-const openWheelButton = document.getElementById("open-wheel-button");
-const closeOverlayButton = document.getElementById("close-overlay-button");
-const wheelContainer = document.getElementById("wheel-container");
-const spinButton = document.getElementById("spin-button");
-const resultContainer = document.getElementById("result-container");
-const congratsContainer = document.getElementById("congrats-container");
-const closeCongratsButton = document.getElementById("close-overlay-button");
-const spinMessage = document.getElementById("spin-message");
+export const openWheelButton = document.getElementById("open-wheel-button");
+export const closeOverlayButton = document.getElementById("close-overlay-button");
+export const wheelContainer = document.getElementById("wheel-container");
+export const spinButton = document.getElementById("spin-button");
+export const resultContainer = document.getElementById("result-container");
+export const congratsContainer = document.getElementById("congrats-container");
+export const closeCongratsButton = document.getElementById("close-overlay-button");
+export const spinMessage = document.getElementById("spin-message");
 
-let hasSpun = false;
-
-
-openWheelButton.addEventListener("click", () => {
-    wheelContainer.classList.remove("hidden");
-    openWheelButton.classList.add("hidden");
-});
-
-closeOverlayButton.addEventListener("click", () => {
-    wheelContainer.classList.add("hidden");
-    openWheelButton.classList.remove("hidden");
-});
+export let hasSpun = false;
 
 spinButton.addEventListener("click", () => {
     if (!hasSpun) {
@@ -30,23 +19,18 @@ spinButton.addEventListener("click", () => {
 
 }});
 
+export const canvas = document.getElementById("wheel");
+export const ctx = canvas.getContext("2d");
 
-closeCongratsButton.addEventListener("click", () => {
-    congratsContainer.classList.add("hidden");
-});
+export const segments = ["Prijs 1", "Prijs 2", "Prijs 3", "Prijs 4", "Prijs 5", "Prijs 6", "Prijs 7", "Prijs 8"];
+export const colors = ["#A833FF", "#FFC300", "#3357FF", "#FF33A8", "#A833FF", "#FFC300", "#3357FF",  "#FF33A8"];
+export const segmentAngle = 2 * Math.PI / segments.length;
+export let currentAngle = 0;
+export let spinAngleStart = 0;
+export let spinTime = 0;
+export let spinTimeTotal = 0;
 
-const canvas = document.getElementById("wheel");
-const ctx = canvas.getContext("2d");
-
-const segments = ["Prijs 1", "Prijs 2", "Prijs 3", "Prijs 4", "Prijs 5", "Prijs 6", "Prijs 7", "Prijs 8"];
-const colors = ["#A833FF", "#FFC300", "#3357FF", "#FF33A8", "#A833FF", "#FFC300", "#3357FF",  "#FF33A8"];
-const segmentAngle = 2 * Math.PI / segments.length;
-let currentAngle = 0;
-let spinAngleStart = 0;
-let spinTime = 0;
-let spinTimeTotal = 0;
-
-function drawWheel() {
+export function drawWheel() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     const centerX = canvas.width / 2;
     const centerY = canvas.height / 2;
@@ -73,7 +57,7 @@ function drawWheel() {
     }
 }
 
-function rotateWheel() {
+export function rotateWheel() {
     resultContainer.classList.add('hidden');
     spinAngleStart = Math.random() * 10 + 10;
     spinTime = 0;
@@ -81,7 +65,7 @@ function rotateWheel() {
     requestAnimationFrame(spin);
 }
 
-function spin() {
+export function spin() {
     spinTime += 30;
     if (spinTime >= spinTimeTotal) {
         stopRotateWheel();
@@ -93,7 +77,7 @@ function spin() {
     requestAnimationFrame(spin);
 }
 
-function stopRotateWheel() {
+export function stopRotateWheel() {
     const degrees = currentAngle * 180 / Math.PI + 90;
     const arcd = segmentAngle * 180 / Math.PI;
     const index = Math.floor((360 - degrees % 360) / arcd);
@@ -102,32 +86,10 @@ function stopRotateWheel() {
     resultContainer.classList.remove('hidden');
     congratsContainer.classList.remove('hidden');
     // Draw an arrow pointing to the winning segment
-function drawArrow() {
-    const centerX = canvas.width / 2;
-    const centerY = canvas.height / 2;
-    const radius = canvas.width / 2;
-    const arrowLength = 30; // Length of the arrow
-    const arrowWidth = 10; // Width of the arrow
-
-    ctx.save();
-    ctx.translate(centerX, centerY);
-    ctx.rotate(currentAngle + segmentAngle / 2); // Rotate to the center of the winning segment
-
-    // Draw the arrow
-    ctx.beginPath();
-    ctx.moveTo(0, -radius + arrowLength); // Start at the top of the wheel
-    ctx.lineTo(-arrowWidth / 2, -radius); // Draw left side of the arrow
-    ctx.lineTo(arrowWidth / 2, -radius); // Draw right side of the arrow
-    ctx.closePath();
-    ctx.fillStyle = "red"; // Set arrow color
-    ctx.fill();
-
-    ctx.restore();
-}
 
 }
 
-function easeOut(t, b, c, d) {
+export function easeOut(t, b, c, d) {
     const ts = (t /= d) * t;
     const tc = ts * t;
     return b + c * (tc + -3 * ts + 3 * t);
