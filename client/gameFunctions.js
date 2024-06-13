@@ -1,6 +1,9 @@
 const overlayEnd = document.getElementById("end-game")
 
 export class KitchenQuest {
+
+    #level = null
+
     constructor(chef, container) {
         this.chef = document.getElementById(chef);
         this.container = document.getElementById(container);
@@ -8,24 +11,25 @@ export class KitchenQuest {
         this.speed = 16;
         this.level = null;
         this.spelernaam = null;
+        this.ingredientInterval = null;
+        this.collisionInterval = null;
+        this.obstacleInterval = null;
     }
 
-
-
-    setLevel(level) {
-        this.level = level;
+    set level(value){
+        console.log(value)
+        this.#level = +value
         console.log(`gekozen level is ${this.level}`)
     }
 
 
 
-    startTimer() {
-        setTimeout(function () {
-          //  wheelContainer.style.display = 'flex'
-           // drawWheel()
-            overlayEnd.style.display = "flex"
-        }, 10000)
-    }
+    // setLevel(level) {
+    //     this.level = level;
+        
+    // }
+
+
 
     walk(event) {
         switch (event.key) {
@@ -57,16 +61,31 @@ export class KitchenQuest {
         const randomImage = `./images/ingredients/ing${randomImageIndex}.png`;
         ingredient.style.backgroundImage = `url(${randomImage})`;
         ingredient.style.backgroundSize = 'contain';
-        const minX = 120; 
-        const minY = 120; 
-        const maxX = this.container.offsetWidth - 120 - 32; 
-        const maxY = this.container.offsetHeight - 120 - 32; 
+        const minX = 120;
+        const minY = 120;
+        const maxX = this.container.offsetWidth - 120 - 32;
+        const maxY = this.container.offsetHeight - 120 - 32;
 
         const randomX = Math.floor(Math.random() * (maxX - minX)) + minX;
         const randomY = Math.floor(Math.random() * (maxY - minY)) + minY;
         ingredient.style.left = `${randomX}px`;
         ingredient.style.top = `${randomY}px`;
         this.container.appendChild(ingredient);
+
+        setTimeout(() => {
+            ingredient.remove();
+        }, 5000);
+    }
+
+    startIngredientGeneration() {
+        const interval = 30000 / this.level;
+        this.ingredientInterval = setInterval(() => {
+            this.generateIngredient();
+        }, interval);
+    }
+
+    stopIngredientGeneration(){
+        clearInterval(this.ingredientInterval)
     }
 
     isColliding(element1, element2) {
@@ -79,43 +98,24 @@ export class KitchenQuest {
     }
 
     checkCollision() {
-        const ingredients = document.querySelectorAll('.ingredient');
-        ingredients.forEach(ingredient => {
-            if (this.isColliding(this.chef, ingredient)) {
-                ingredient.remove();
-                this.score++;
-            }
-        });
-    }
-
-    playGame() {
-        this.obstaclespawner = new ObstacleSpawner(this.container)
-        document.addEventListener('keydown', (event) => this.walk(event));        
-        setInterval(() => this.generateIngredient(), 500);
-        setInterval(() => this.checkCollision(), 10);
-        setInterval(() => this.obstaclespawner.generateObstacle(), 500);
-    }
-}
-
-class ObstacleSpawner {
-    constructor(container) {
-        this.container = container;
-    }
-
-    startSpawning(minTime, maxTime) {
-        const spawn = () => {
-            this.generateObstacle();
-            const randomTime = Math.random() * (maxTime - minTime) + minTime;
-            setTimeout(spawn, randomTime);
-        };
-        spawn();
+        this.collisionInterval = setInterval(() => {
+            const ingredients = document.querySelectorAll('.ingredient');
+            ingredients.forEach(ingredient => {
+                if (this.isColliding(this.chef, ingredient)) {
+                    ingredient.remove();
+                    this.score = this.score + 200;
+                    console.log(`Collision detected! Huidige score: ${this.score}`);
+                }
+            });
+        }, 100);
     }
 
     generateObstacle() {
         const obstacle = document.createElement('div');
         obstacle.classList.add('obstacle');
-        obstacle.addEventListener('click', () =>{
+        obstacle.addEventListener('click', () => {
             obstacle.remove();
+            clearInterval(obstacle.timerInterval);
         });
         const spawnX = Math.floor(Math.random() * (this.container.offsetWidth - 50));
         const spawnY = Math.floor(Math.random() * (this.container.offsetHeight - 50));
@@ -127,15 +127,31 @@ class ObstacleSpawner {
         obstacle.style.backgroundImage = `url(${randomImage})`;
         obstacle.style.backgroundSize = 'contain';
 
-
         this.container.appendChild(obstacle);
+
+        const startTime = Date.now();
+        obstacle.timerInterval = setInterval(() => {
+            const currentTime = Date.now();
+            const elapsedTime = (currentTime - startTime) / 1000;
+    
+            this.score -= 20;
+            console.log(`Obstakel! Score verminderd! Huidige score: ${this.score}`);
+            },2000)
     }
-    checkClicks() {
-        const obstacles = document.querySelectorAll('.obstacle');
-        obstacles.forEach(obstacle => {
-                obstacle.addEventListener('click', () =>{
-                    obstacle.remove();
-                });
-        });
+
+    startObstacleGeneration() {
+        const level = +this.level+2
+        const interval = 30000 / (level)
+        console.log(interval, this.level +2)
+
+        if (this.obstacleInterval) clearInterval(this.obstacleInterval)
+
+        this.obstacleInterval = setInterval(() => {
+            this.generateObstacle();
+        }, interval);
+    }
+
+    stopObstacleGeneration(){
+        clearInterval(this.obstacleInterval)
     }
 }

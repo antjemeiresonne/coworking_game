@@ -2,6 +2,7 @@ import { FormValidator } from "./formValidator.js";
 import { KitchenQuest } from "./gameFunctions.js";
 
 const kitchenQuest = new KitchenQuest('chef', 'game-container');
+console.log(kitchenQuest.chef)
 const form = document.querySelector('form')
 const overlay = document.getElementById('spelregels')
 
@@ -27,10 +28,19 @@ playButtons.forEach(button => {
         console.log(`Spelernaam is ${kitchenQuest.spelernaam}`);
 
         const level = event.target.id;
-        kitchenQuest.setLevel(level);
+        kitchenQuest.level = level;
+        //kitchenQuest.setLevel(level);
 
         overlay.style.display = 'none'
         kitchenQuest.startTimer()
+        kitchenQuest.generateIngredient()
+        kitchenQuest.startIngredientGeneration()
+        kitchenQuest.startObstacleGeneration()
+        kitchenQuest.checkCollision()
+        setTimeout(function () {
+            kitchenQuest.stopIngredientGeneration()
+            kitchenQuest.stopObstacleGeneration()
+        }, 30000)
     });
     document.addEventListener('keydown', (event) => {
         kitchenQuest.walk(event)
