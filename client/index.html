@@ -16,7 +16,6 @@
 
     <!-- deze files zijn voor de overlay -->
     <!--momenteel defer want deze file expoteert niks-->
-    <script src="overlay.js" type="module"></script>
     <link rel="stylesheet" href="overlay.css">
 
 </head>
@@ -36,14 +35,13 @@
             <!--regels overlay-->
             <div id="spelregels" class="overlay">
                 <div class="overlay-content">
-                    <span id="closeOverlayBtnX" class="close-btn">&times;</span>
                     <p class="overlay-titel">Play our game</p>
                     <p>And win a discount</p>
                     <p>use ZQSD keys to move</p>
                     <br>
-                    <p>pick up ingredients and click on obstacles to fix them</p>
-                    <form action="nameForm">
-                        <div class="errorSummary" role="group" aria-labelledby="errorSummary-heading" tabindex="-1">
+                    <p>pick up ingredients by walking over them and click on obstacles to fix them</p>
+                    <form id="nameForm">
+                        <div class="errorSummary" role="group" tabindex="-1">
                             <ul></ul>
                         </div>
                         <div>
@@ -56,9 +54,9 @@
                                 tabindex="0">
                         </div>
                         <div>
-                            <button id="overlayBtnPlay1" class="playButton">play easy</button>
-                            <button id="overlayBtnPlay2" class="playButton">play medium</button>
-                            <button id="overlayBtnPlay3" class="playButton">play hard</button>
+                            <button id="3" class="playButton overlayBtnPlay1" type="submit">play easy</button>
+                            <button id="7" class="playButton overlayBtnPlay2" type="submit">play medium</button>
+                            <button id="10" class="playButton overlayBtnPlay3" type="submit">play hard</button>
                         </div>
                     </form>
                 </div>
