@@ -1,5 +1,3 @@
-const overlayEnd = document.getElementById("end-game")
-const time = 10000
 export class KitchenQuest {
 
     #level = null
@@ -14,6 +12,7 @@ export class KitchenQuest {
         this.ingredientInterval = null;
         this.collisionInterval = null;
         this.obstacleInterval = null;
+        this.time = 10000
     }
 
     set level(value){
@@ -29,11 +28,13 @@ export class KitchenQuest {
         
     // }
     startTimer() {
+        const overlayEnd = document.getElementById("end-game")
+        const tips = document.querySelectorAll(".tip");
+        const randomIndex = Math.floor(Math.random() * 9);
         setTimeout(function () {
-            //  wheelContainer.style.display = 'flex'
-            // drawWheel()
+            tips[randomIndex].style.display = 'flex';
             overlayEnd.style.display = "flex"
-        }, time)}
+        }, this.time)}
 
     get level() {
         return this.#level
@@ -86,7 +87,7 @@ export class KitchenQuest {
     }
 
     startIngredientGeneration() {
-        const interval = time / this.level;
+        const interval = this.time / this.level;
         this.ingredientInterval = setInterval(() => {
             this.generateIngredient();
         }, interval);
@@ -137,11 +138,10 @@ export class KitchenQuest {
 
         this.container.appendChild(obstacle);
 
-        const startTime = Date.now();
+
         obstacle.timerInterval = setInterval(() => {
-            const currentTime = Date.now();
-            const elapsedTime = (currentTime - startTime) / 1000;
-    
+
+
             this.score -= 20;
             console.log(`Obstakel! Score verminderd! Huidige score: ${this.score}`);
             },2000)
@@ -149,7 +149,7 @@ export class KitchenQuest {
 
     startObstacleGeneration() {
         const level = +this.level+2
-        const interval = time / (level)
+        const interval = this.time / (level)
         console.log(interval, this.level +2)
 
         if (this.obstacleInterval) clearInterval(this.obstacleInterval)
