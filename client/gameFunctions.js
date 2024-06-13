@@ -1,5 +1,5 @@
 const overlayEnd = document.getElementById("end-game")
-
+const time = 10000
 export class KitchenQuest {
 
     #level = null
@@ -33,7 +33,7 @@ export class KitchenQuest {
             //  wheelContainer.style.display = 'flex'
             // drawWheel()
             overlayEnd.style.display = "flex"
-        }, 10000)}
+        }, time)}
 
     get level() {
         return this.#level
@@ -86,7 +86,7 @@ export class KitchenQuest {
     }
 
     startIngredientGeneration() {
-        const interval = 30000 / this.level;
+        const interval = time / this.level;
         this.ingredientInterval = setInterval(() => {
             this.generateIngredient();
         }, interval);
@@ -149,7 +149,7 @@ export class KitchenQuest {
 
     startObstacleGeneration() {
         const level = +this.level+2
-        const interval = 30000 / (level)
+        const interval = time / (level)
         console.log(interval, this.level +2)
 
         if (this.obstacleInterval) clearInterval(this.obstacleInterval)
