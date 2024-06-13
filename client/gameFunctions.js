@@ -28,8 +28,16 @@ export class KitchenQuest {
     //     this.level = level;
         
     // }
+    startTimer() {
+        setTimeout(function () {
+            //  wheelContainer.style.display = 'flex'
+            // drawWheel()
+            overlayEnd.style.display = "flex"
+        }, 10000)}
 
-
+    get level() {
+        return this.#level
+    }
 
     walk(event) {
         switch (event.key) {
