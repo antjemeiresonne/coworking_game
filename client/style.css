@@ -66,7 +66,6 @@ footer{
 /*BASIC ELEMENTS IN GAME*/
 #game-container {
     height: 38rem;
-    border: 2px solid var(--black);
     position: relative;
     background-image: url(images/kitchen.png);
     background-repeat: no-repeat;

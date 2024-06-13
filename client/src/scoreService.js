@@ -1,4 +1,4 @@
-export const getScores = async function(){
+export const getScores = async function () {
     return fetch(import.meta.env.API_URL)
         .then(response => {
             if (!response.ok) {
@@ -14,15 +14,15 @@ export const getScores = async function(){
 }
 
 
-export const postHighscore = async (payload) =>{
-    const response = await fetch(`${import.meta.env.VITE_API_URL}`,{
+export const postHighscore = async (payload) => {
+    const response = await fetch(`${import.meta.env.API_URL}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(payload)
     })
-    if(!response.ok){
+    if (!response.ok) {
         throw new Error('Network response was not ok ' + response.statusText)
     }
     const json = await response.json()
