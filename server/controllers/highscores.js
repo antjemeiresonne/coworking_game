@@ -1,7 +1,7 @@
 import {pool} from "../db.js"
 
 export const getAllHighscores = async (req, res) => {
-    const query = 'SELECT * FROM highscores ORDER BY score LIMIT 3;'
+    const query = 'SELECT * FROM highscores ORDER BY score DESC LIMIT 3;'
     try {
       const [rows] = await pool.execute(query);
       res.status(200)
