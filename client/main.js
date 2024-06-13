@@ -114,7 +114,7 @@ class KitchenQuest {
             }
         }
 
-// Gebruik het ObstacleSpawner klasse
+        // Gebruik het ObstacleSpawner klasse
         const container = document.querySelector('.container');
         const obstacleClass = 'obstacle'; 
         const spawnX = 100;
@@ -126,8 +126,8 @@ class KitchenQuest {
 
     }
 
-    fixObstacle()
-{
+fixObstacle()
+        {
             // Voeg een event listener om het obstakel te verwijderen
             obstacle.addEventListener('click', () => {
             obstacle.remove();
