@@ -105,15 +105,16 @@ class KitchenQuest {
     generateObstacle() {
         const obstacle = document.createElement('div');
         obstacle.classList.add(this.obstacleClass);
-        obstacle.style.left = `${this.spawnX}px`;
-        obstacle.style.top = `${this.spawnY}px`;
-        const imageCount = 6;
+        const spawnX = Math.floor(Math.random() * (this.container.offsetWidth - 50));
+        const spawnY = Math.floor(Math.random() * (this.container.offsetHeight - 50));
+        obstacle.style.left = `${spawnX}px`;
+        obstacle.style.top = `${spawnY}px`;
+        const imageCount = 1;
         const randomImageIndex = Math.floor(Math.random() * imageCount) + 1;
         const randomImage = `./images/obstacles/obstacle${randomImageIndex}.gif`;
         obstacle.style.backgroundImage = `url(${randomImage})`;
         obstacle.style.backgroundSize = 'contain';
-        const spawnX = Math.floor(Math.random() * (this.container.offsetWidth - 50));
-        const spawnY = Math.floor(Math.random() * (this.container.offsetHeight - 50));
+
 
         this.container.appendChild(obstacle);
 
