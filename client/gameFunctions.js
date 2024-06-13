@@ -23,7 +23,6 @@ export class KitchenQuest {
     }
 
 
-
     // setLevel(level) {
     //     this.level = level;
         
