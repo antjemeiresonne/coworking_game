@@ -1,10 +1,16 @@
 export const getScores = async function(){
-    const response = await fetch(`${import.meta.env.VITE_API_URL}`);
-    if (!response.ok){
-        throw new Error("Network response was not ok" + response.statusText)
-    }
-    const json = await response.json();
-    return json.data
+    return fetch(import.meta.env.API_URL)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            console.log('highscores opgehaald')
+            return response.json();
+        })
+        .then(json => json.data)
+        .catch(() => {
+            throw new Error('Error fetching cats');
+        });
 }
 
 
