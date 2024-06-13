@@ -12,7 +12,6 @@ class KitchenQuest {
 
     playGame() {
         document.addEventListener('keydown', (event) => this.walk(event));
-        this.showRules();
         const rules = document.querySelector('.BUTTONPLAYGAME');
         if (rules) {
             rules.addEventListener('click', () => this.startGame());
@@ -30,19 +29,19 @@ class KitchenQuest {
     walk(event) {
         switch (event.key) {
             case 'z': 
-                this.chef.style.top = `${Math.max(0, this.chef.offsetTop - this.speed)}px`;
+                this.chef.style.top = `${Math.max(120, this.chef.offsetTop - this.speed)}px`;
                 break;
             case 's': 
-                this.chef.style.top = `${Math.min(this.container.offsetHeight - this.chef.offsetHeight, this.chef.offsetTop + this.speed)}px`;
+                this.chef.style.top = `${Math.min(this.container.offsetHeight - this.chef.offsetHeight - 120, this.chef.offsetTop + this.speed)}px`;
                 break;
             case 'q': 
-                this.chef.style.left = `${Math.max(0, this.chef.offsetLeft - this.speed)}px`;
+                this.chef.style.left = `${Math.max(120, this.chef.offsetLeft - this.speed)}px`;
                 break;
             case 'd': 
-                this.chef.style.left = `${Math.min(this.container.offsetWidth - this.chef.offsetWidth, this.chef.offsetLeft + this.speed)}px`;
+                this.chef.style.left = `${Math.min(this.container.offsetWidth - this.chef.offsetWidth - 120, this.chef.offsetLeft + this.speed)}px`;
                 break;
             default:
-                console.log("Invalid key pressed");
+                console.log("Ongeldige toets ingedrukt");
         }
     }
 
@@ -57,8 +56,8 @@ class KitchenQuest {
         const randomImage = `./images/ingredients/ing${randomImageIndex}.png`;
         ingredient.style.backgroundImage = `url(${randomImage})`;
         ingredient.style.backgroundSize = 'contain';
-        const randomX = Math.floor(Math.random() * (this.container.offsetWidth - 48));
-        const randomY = Math.floor(Math.random() * (this.container.offsetHeight - 48));
+        const randomX = Math.floor(Math.random() * (this.container.offsetWidth - 120));
+        const randomY = Math.floor(Math.random() * (this.container.offsetHeight - 120));
         ingredient.style.left = `${randomX}px`;
         ingredient.style.top = `${randomY}px`;
         this.container.appendChild(ingredient);
@@ -133,3 +132,5 @@ class KitchenQuest {
 // Usage example
 const kitchenQuest = new KitchenQuest('spelernaam', 'chef', 'game-container', 'obstacle', 100, 150);
 kitchenQuest.playGame();
+kitchenQuest.generateIngredient();
+kitchenQuest.checkCollision();

@@ -30,5 +30,5 @@ function timer() {
     setTimeout(function () {
         wheelContainer.style.display = 'flex'
         drawWheel()
-    }, 5000) // = 30 seconds
+    }, 30000) // = 30 seconds
 }
