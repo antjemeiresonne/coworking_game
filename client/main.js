@@ -14,6 +14,10 @@ formValidator.addValidator({
     method: field => field.value.trim().length > 0,
     message: 'Naam is verplicht in te vullen.'
 })
+const highscorelist = document.querySelector('ul.highscores')
+    getScores()
+        .then(scores => scores.forEach(score => addHighscore(score, highscorelist)))
+        .catch(e => console.error(e))
 const playButtons = document.querySelectorAll('.playButton');
 playButtons.forEach(button => {
     button.addEventListener('click', (event) => {
@@ -54,8 +58,4 @@ playButtons.forEach(button => {
     document.addEventListener('keydown', (event) => {
         kitchenQuest.walk(event)
     })
-    const highscorelist = document.querySelector('ul.highscores')
-    getScores()
-        .then(scores => scores.forEach(score => addHighscore(score, highscorelist)))
-        .catch(e => console.error(e))
 });

@@ -111,6 +111,12 @@ footer{
     color: var(--red);
     font-weight: 800;
 }
+.highscores li{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2rem;
+}
 
 
 
