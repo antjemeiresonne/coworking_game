@@ -54,6 +54,7 @@
 }
 
 .overlay-end{
+    max-width: 60vh;
     position: fixed;
     top: 0;
     left: 0;
