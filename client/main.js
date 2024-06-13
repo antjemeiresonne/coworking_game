@@ -1,5 +1,5 @@
-import { FormValidator } from "./formValidator.js";
-import { KitchenQuest } from "./gameFunctions.js";
+import { FormValidator } from "./src/formValidator.js";
+import { KitchenQuest } from "./src/gameFunctions.js";
 
 const kitchenQuest = new KitchenQuest('chef', 'game-container');
 console.log(kitchenQuest.chef)
