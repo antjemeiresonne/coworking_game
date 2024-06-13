@@ -110,11 +110,12 @@ class KitchenQuest {
 
 // Define the ObstacleSpawner class if it is separate
 class ObstacleSpawner {
-    constructor(container, obstacleClass, spawnX, spawnY) {
+    constructor(container, obstacleClass, spawnX, spawnY, imagePath) {
         this.container = container;
         this.obstacleClass = obstacleClass;
         this.spawnX = spawnX;
         this.spawnY = spawnY;
+        this.imagePath = imagePath;
     }
 
     startSpawning(minTime, maxTime) {
@@ -131,6 +132,10 @@ class ObstacleSpawner {
         obstacle.classList.add(this.obstacleClass);
         obstacle.style.left = `${this.spawnX}px`;
         obstacle.style.top = `${this.spawnY}px`;
+        const imageCount = 8;
+        const randomImageIndex = Math.floor(Math.random() * imageCount) + 1;
+        const randomImage = `./images/obstacle${randomImageIndex}.gif`;
+
         this.container.appendChild(obstacle);
 
         // Add click event to remove obstacle and increase score
@@ -140,6 +145,8 @@ class ObstacleSpawner {
         });
     }
 }
+
+
 
 // Usage example
 const kitchenQuest = new KitchenQuest('spelernaam', 'chef', 'game-container', 'obstacle', 100, 150);
