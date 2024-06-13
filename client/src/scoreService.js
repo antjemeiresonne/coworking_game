@@ -8,8 +8,8 @@ export const getScores = async function () {
             return response.json();
         })
         .then(json => json.data)
-        .catch(() => {
-            throw new Error('Error fetching cats');
+        .catch((e) => {
+            console.log(e);
         });
 }
 
