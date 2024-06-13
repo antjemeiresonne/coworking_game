@@ -38,6 +38,6 @@ document.addEventListener('DOMContentLoaded', function () {
     function timer() {
         setTimeout(function () {
             endGame.style.display = 'flex'
-        }, 5000) // = 30 seconds
+        }, 30000) // = 30 seconds
     }
 })
