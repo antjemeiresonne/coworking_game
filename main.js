@@ -92,41 +92,39 @@ class KitchenQuest {
 
 
     generateObstacle() {
-        const obstacle = document.createElement('div');
+                const obstacle = document.createElement('div');
+                // Obstakel toevoegen aan de div
+                obstacle.classList.add(this.obstacleClass);
 
-        obstacle.classList.add(this.obstacleClass);
+                // Set de vaste positie van het obstakel
+                obstacle.style.left = `${this.spawnX}px`;
+                obstacle.style.top = `${this.spawnY}px`;
+
+                // Voeg het obstakel toe aan de container
+                this.container.appendChild(obstacle);
+            }
+
+            startSpawning(minTime, maxTime) {
+                const spawn = () => {
+                    this.generateObstacle();
+                    const randomTime = Math.random() * (maxTime - minTime) + minTime;
+                    setTimeout(spawn, randomTime);
+                };
+                spawn();
+            }
+        }
+
+// Gebruik het ObstacleSpawner klasse
+        const container = document.querySelector('.container');
+        const obstacleClass = 'obstacle'; 
+        const spawnX = 100;
+        const spawnY = 150;
+
+        const spawner = new ObstacleSpawner(container, obstacleClass, spawnX, spawnY);
+        spawner.startSpawning(1000, 5000);
 
 
-        obstacle.style.left = `${this.spawnX}px`;
-        obstacle.style.top = `${this.spawnY}px`;
-
-
-        const img = document.createElement('img');
-        img.src = this.imgSrc;
-        obstacle.appendChild(img);
-
-        this.container.appendChild(obstacle);
     }
-
-    startSpawning(minTime, maxTime) {
-        const spawn = () => {
-            this.generateObstacle();
-            const randomTime = Math.random() * (maxTime - minTime) + minTime;
-            setTimeout(spawn, randomTime);
-        };
-        spawn();
-    }
-}
-
-
-const container = document.querySelector('.container');
-const obstacleClass = 'obstacle';
-const spawnX = 100;
-const spawnY = 150;
-const imgSrc = 'coworking_game/images/giphy.gif';
-
-const spawner = new ObstacleSpawner(container, obstacleClass, spawnX, spawnY, imgSrc);
-spawner.startSpawning(1000, 5000);
 
     fixObstacle()
 {
