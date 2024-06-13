@@ -68,7 +68,7 @@ footer{
     height: 38rem;
     border: 2px solid var(--black);
     position: relative;
-    background-image: url(./images/kitchen.png);
+    background-image: url(./client/images/kitchen.png);
     background-repeat: no-repeat;
     background-size: contain;
     grid-column: 3 / 8;
@@ -79,7 +79,7 @@ footer{
 #chef {
     width: 4rem;
     height: 6rem;
-    background-image: url(./images/chef.png);
+    background-image: url(./client/images/chef.png);
     background-repeat: no-repeat;
     background-size: contain;
     position: absolute;
