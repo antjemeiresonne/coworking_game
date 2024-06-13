@@ -22,67 +22,82 @@
 </head>
 
 <body>
-<div class="container">
-    <header>
-        <nav>
-            <ul>
-                <li><a href="./index.html"><img src="images/bergHoff_logo.png" alt="berghoff logo"></a></li>
-                <li>Kitchen Quest</li>
-                <li><a href="https://berghoffworldwide.com/be_nl/">View Products</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <!--regels overlay-->
-        <div id="spelregels" class="overlay">
-            <div class="overlay-content">
-                <span id="closeOverlayBtnX" class="close-btn">&times;</span>
-                <p class="overlay-titel">Play our game</p>
-                <p>And win a discount</p>
-                <p>use arrow keys to move</p>
-                <br>
-                <p>pick up ingredients and click on obstacles to fix them</p>
-                <!-- eventueel nog extra uitleg -->
-                <button id="overlayBtnPlay1" class="playButton">play easy</button>
-                <button id="overlayBtnPlay2" class="playButton">play medium</button>
-                <button id="overlayBtnPlay3" class="playButton">play hard</button>
-            </div>
-        </div>
-        <section class="luckywheel">
-            <div id="wheel-container" class="overlay-container hidden">
-                <canvas id="wheel" width="600" height="600"></canvas>
-                <button id="spin-button" class="btn">Spin</button>
-                <a href="https://berghoffworldwide.com/be_nl/" class="btn">Claim prise</a>
-                <div id="arrow"></div>
-                <p id="spin-message" class="message hidden"></p>
-            </div>
-            <div id="result-container" class="overlay-container hidden">
-                <p id="result-text"></p>
-            </div>
-            <div id="congrats-container" class="overlay-container hidden">
-                <p id="congrats-text"></p>
-            </div>
-
-        </section>
-
-        <div class="wrapper">
-            <div id="game-container">
-                <div id="chef"></div>
+    <div class="container">
+        <header>
+            <nav>
                 <ul>
-                    <li id="obstacle1" aria-hidden="true"></li>
-                    <li id="obstacle2" aria-hidden="true"></li>
-                    <li id="obstacle3" aria-hidden="true"></li>
-                    <li id="obstacle4" aria-hidden="true"></li>
-                    <li id="obstacle5" aria-hidden="true"></li>
-                    <li id="obstacle6" aria-hidden="true"></li>
+                    <li><a href="./index.html"><img src="images/bergHoff_logo.png" alt="berghoff logo"></a></li>
+                    <li>Kitchen Quest</li>
+                    <li><a href="https://berghoffworldwide.com/be_nl/">View Products</a></li>
                 </ul>
+            </nav>
+        </header>
+        <main>
+            <!--regels overlay-->
+            <div id="spelregels" class="overlay">
+                <div class="overlay-content">
+                    <span id="closeOverlayBtnX" class="close-btn">&times;</span>
+                    <p class="overlay-titel">Play our game</p>
+                    <p>And win a discount</p>
+                    <p>use ZQSD keys to move</p>
+                    <br>
+                    <p>pick up ingredients and click on obstacles to fix them</p>
+                    <form action="nameForm">
+                        <div class="errorSummary" role="group" aria-labelledby="errorSummary-heading" tabindex="-1">
+                            <ul></ul>
+                        </div>
+                        <div>
+                            <label for="name">
+                                <span class="field-label">Name
+                                    <abbr title="This field should always be filled in."></abbr>
+                                </span>
+                            </label>
+                            <input type="text" name="name" id="name" autocomplete="given-name" required autofocus
+                                tabindex="0">
+                        </div>
+                        <div>
+                            <button id="overlayBtnPlay1" class="playButton">play easy</button>
+                            <button id="overlayBtnPlay2" class="playButton">play medium</button>
+                            <button id="overlayBtnPlay3" class="playButton">play hard</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </div>
-    </main>
-    <footer>
-        <p>© Leon Meesseman, Mathis De Baere, Emmert Van de Genachte, Antje Meiresonne</p>
-    </footer>
-</div>
+            <section class="luckywheel">
+                <div id="wheel-container" class="overlay-container hidden">
+                    <canvas id="wheel" width="600" height="600"></canvas>
+                    <button id="spin-button" class="btn">Spin</button>
+                    <a href="https://berghoffworldwide.com/be_nl/" class="btn">Claim prise</a>
+                    <div id="arrow"></div>
+                    <p id="spin-message" class="message hidden"></p>
+                </div>
+                <div id="result-container" class="overlay-container hidden">
+                    <p id="result-text"></p>
+                </div>
+                <div id="congrats-container" class="overlay-container hidden">
+                    <p id="congrats-text"></p>
+                </div>
+
+            </section>
+
+            <div class="wrapper">
+                <div id="game-container">
+                    <div id="chef"></div>
+                    <ul>
+                        <li id="obstacle1" aria-hidden="true"></li>
+                        <li id="obstacle2" aria-hidden="true"></li>
+                        <li id="obstacle3" aria-hidden="true"></li>
+                        <li id="obstacle4" aria-hidden="true"></li>
+                        <li id="obstacle5" aria-hidden="true"></li>
+                        <li id="obstacle6" aria-hidden="true"></li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <p>© Leon Meesseman, Mathis De Baere, Emmert Van de Genachte, Antje Meiresonne</p>
+        </footer>
+    </div>
 </body>
 
 </html>

@@ -11,7 +11,7 @@ class KitchenQuest {
         this.spawnY = spawnY;
     }
 
-    
+
 
     startGame() {
         // Game start logic goes here
@@ -51,8 +51,13 @@ class KitchenQuest {
         const randomImage = `./images/ingredients/ing${randomImageIndex}.png`;
         ingredient.style.backgroundImage = `url(${randomImage})`;
         ingredient.style.backgroundSize = 'contain';
-        const randomX = Math.floor(Math.random() * (this.container.offsetWidth - 64));
-        const randomY = Math.floor(Math.random() * (this.container.offsetHeight - 64));
+        const minX = 120; 
+        const minY = 120; 
+        const maxX = this.container.offsetWidth - 120 - 32; 
+        const maxY = this.container.offsetHeight - 120 - 32; 
+
+        const randomX = Math.floor(Math.random() * (maxX - minX)) + minX;
+        const randomY = Math.floor(Math.random() * (maxY - minY)) + minY;
         ingredient.style.left = `${randomX}px`;
         ingredient.style.top = `${randomY}px`;
         this.container.appendChild(ingredient);
