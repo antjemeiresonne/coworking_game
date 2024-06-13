@@ -12,7 +12,17 @@
 }
 
 .overlay-content {
-    max-width: 60vh;
+    max-width: 100%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    position: relative;
+}
+
+.overlay-content-end {
+    max-width: 40rem;
     background-color: #fff;
     padding: 20px;
     border-radius: 5px;
