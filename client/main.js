@@ -123,7 +123,6 @@ class KitchenQuest {
         const spawner = new ObstacleSpawner(container, obstacleClass, spawnX, spawnY);
         spawner.startSpawning(1000, 5000);{
 
-
     }
 
     fixObstacle()
