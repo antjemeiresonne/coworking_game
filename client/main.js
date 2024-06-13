@@ -41,7 +41,9 @@ playButtons.forEach(button => {
             kitchenQuest.stopIngredientGeneration()
             kitchenQuest.stopObstacleGeneration()
             document.querySelector('#score').innerText = kitchenQuest.score.toString()
-        }, 30000)
+
+        }, kitchenQuest.time)
+
     });
     document.addEventListener('keydown', (event) => {
         kitchenQuest.walk(event)
