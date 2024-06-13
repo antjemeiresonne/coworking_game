@@ -1,10 +1,7 @@
-export const openWheelButton = document.getElementById("open-wheel-button");
-export const closeOverlayButton = document.getElementById("close-overlay-button");
 export const wheelContainer = document.getElementById("wheel-container");
 export const spinButton = document.getElementById("spin-button");
 export const resultContainer = document.getElementById("result-container");
 export const congratsContainer = document.getElementById("congrats-container");
-export const closeCongratsButton = document.getElementById("close-overlay-button");
 export const spinMessage = document.getElementById("spin-message");
 
 export let hasSpun = false;
