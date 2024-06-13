@@ -1,4 +1,3 @@
-document.addEventListener('DOMContentLoaded', function () {
     const overlay = document.getElementById('spelregels')
     const closeOverlayBtnX = document.getElementById('closeOverlayBtnX')
     const overlayBtnPlay1 = document.getElementById('overlayBtnPlay1')
@@ -6,11 +5,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const overlayBtnPlay3 = document.getElementById('overlayBtnPlay3')
     const endGame = document.getElementById('endGame')
 
-    overlay.style.display = 'flex'
-
     closeOverlayBtnX.addEventListener('click', function () {
         overlay.style.display = 'none'
-
     })
 
     overlayBtnPlay1.addEventListener('click', function () {
@@ -28,16 +24,8 @@ document.addEventListener('DOMContentLoaded', function () {
         timer()
     })
 
-    // Close overlay when clicking outside of the content
-    // overlay.addEventListener('click', function (event) {
-    //     if (event.target === overlay) {
-    //         overlay.style.display = 'none'
-    //     }
-    // })
-
     function timer() {
         setTimeout(function () {
             endGame.style.display = 'flex'
         }, 30000) // = 30 seconds
-    }
-})
+}
