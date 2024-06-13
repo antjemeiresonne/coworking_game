@@ -1,5 +1,5 @@
 const overlayEnd = document.getElementById("end-game")
-const time = 10000
+const time = 30000
 export class KitchenQuest {
 
     #level = null
@@ -124,8 +124,8 @@ export class KitchenQuest {
             obstacle.remove();
             clearInterval(obstacle.timerInterval);
         });
-        const spawnX = Math.floor(Math.random() * (this.container.offsetWidth - 50));
-        const spawnY = Math.floor(Math.random() * (this.container.offsetHeight - 50));
+        const spawnX = Math.floor(Math.random() * (this.container.offsetWidth - 120));
+        const spawnY = Math.floor(Math.random() * (this.container.offsetHeight - 120));
         obstacle.style.left = `${spawnX}px`;
         obstacle.style.top = `${spawnY}px`;
         const imageCount = 1;
