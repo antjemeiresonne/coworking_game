@@ -33,9 +33,14 @@ playButtons.forEach(button => {
 
         overlay.style.display = 'none'
         kitchenQuest.startTimer()
+        kitchenQuest.generateIngredient()
         kitchenQuest.startIngredientGeneration()
         kitchenQuest.startObstacleGeneration()
         kitchenQuest.checkCollision()
+        setTimeout(function () {
+            kitchenQuest.stopIngredientGeneration()
+            kitchenQuest.stopObstacleGeneration()
+        }, 30000)
     });
     document.addEventListener('keydown', (event) => {
         kitchenQuest.walk(event)

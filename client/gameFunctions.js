@@ -93,6 +93,10 @@ export class KitchenQuest {
         }, interval);
     }
 
+    stopIngredientGeneration(){
+        clearInterval(this.ingredientInterval)
+    }
+
     isColliding(element1, element2) {
         const bound1 = element1.getBoundingClientRect();
         const bound2 = element2.getBoundingClientRect();
@@ -108,8 +112,8 @@ export class KitchenQuest {
             ingredients.forEach(ingredient => {
                 if (this.isColliding(this.chef, ingredient)) {
                     ingredient.remove();
-                    this.score++;
-                    console.log(`Collision detected! Score: ${this.score}`);
+                    this.score = this.score + 200;
+                    console.log(`Collision detected! Huidige score: ${this.score}`);
                 }
             });
         }, 100);
@@ -120,6 +124,7 @@ export class KitchenQuest {
         obstacle.classList.add('obstacle');
         obstacle.addEventListener('click', () => {
             obstacle.remove();
+            clearInterval(obstacle.timerInterval);
         });
         const spawnX = Math.floor(Math.random() * (this.container.offsetWidth - 50));
         const spawnY = Math.floor(Math.random() * (this.container.offsetHeight - 50));
@@ -132,6 +137,15 @@ export class KitchenQuest {
         obstacle.style.backgroundSize = 'contain';
 
         this.container.appendChild(obstacle);
+
+        const startTime = Date.now();
+        obstacle.timerInterval = setInterval(() => {
+            const currentTime = Date.now();
+            const elapsedTime = (currentTime - startTime) / 1000;
+    
+            this.score -= 20;
+            console.log(`Obstakel! Score verminderd! Huidige score: ${this.score}`);
+            },2000)
     }
 
     startObstacleGeneration() {
@@ -144,5 +158,9 @@ export class KitchenQuest {
         this.obstacleInterval = setInterval(() => {
             this.generateObstacle();
         }, interval);
+    }
+
+    stopObstacleGeneration(){
+        clearInterval(this.obstacleInterval)
     }
 }
