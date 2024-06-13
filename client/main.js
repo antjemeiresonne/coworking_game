@@ -29,16 +29,16 @@ class KitchenQuest {
     walk(event) {
         switch (event.key) {
             case 'z': 
-                this.chef.style.top = `${Math.max(0, this.chef.offsetTop - this.speed)}px`;
+                this.chef.style.top = `${Math.max(120, this.chef.offsetTop - this.speed)}px`;
                 break;
             case 's': 
-                this.chef.style.top = `${Math.min(this.container.offsetHeight - this.chef.offsetHeight, this.chef.offsetTop + this.speed)}px`;
+                this.chef.style.top = `${Math.min(this.container.offsetHeight - this.chef.offsetHeight - 120, this.chef.offsetTop + this.speed)}px`;
                 break;
             case 'q': 
-                this.chef.style.left = `${Math.max(0, this.chef.offsetLeft - this.speed)}px`;
+                this.chef.style.left = `${Math.max(120, this.chef.offsetLeft - this.speed)}px`;
                 break;
             case 'd': 
-                this.chef.style.left = `${Math.min(this.container.offsetWidth - this.chef.offsetWidth, this.chef.offsetLeft + this.speed)}px`;
+                this.chef.style.left = `${Math.min(this.container.offsetWidth - this.chef.offsetWidth - 120, this.chef.offsetLeft + this.speed)}px`;
                 break;
             default:
                 console.log("Invalid key pressed");
