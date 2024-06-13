@@ -58,30 +58,33 @@
                             <button id="10" class="playButton overlayBtnPlay3" type="submit">play hard</button>
                         </div>
                     </form>
-
-                    <div>
-                        <ul class="highscores">
-
-                        </ul>
-                    </div>
                 </div>
             </div>
-            <section class="luckywheel">
-                <div id="wheel-container" class="overlay-container hidden">
-                    <canvas id="wheel" width="600" height="600"></canvas>
-                    <button id="spin-button" class="btn">Spin</button>
-                    <a href="https://berghoffworldwide.com/be_nl/" class="btn">Claim prise</a>
-                    <div id="arrow"></div>
-                    <p id="spin-message" class="message hidden"></p>
-                </div>
-                <div id="result-container" class="overlay-container hidden">
-                    <p id="result-text"></p>
-                </div>
-                <div id="congrats-container" class="overlay-container hidden">
-                    <p id="congrats-text"></p>
-                </div>
 
-            </section>
+            <div id="end-game" class="overlay-end">
+                <div class="overlay-content">
+                    <p class="overlay-titel">Your score: <span id="score"></span></p>
+                    <p>Highscores:</p>
+                    <div>
+                        <ul class="highscores">
+<!--                        hier komen de 5 hoogste scores-->
+                        </ul>
+                    </div>
+                    <p>Congratulations, your discount is:<span id="discount"></span></p>
+                    <p>Did you know:</p>
+                    <p class="tip" id="tip1">Use Energy-Efficient Appliances: Choose appliances with the ENERGY STAR label, which are designed to use less energy without sacrificing performance.</p>
+                    <p class="tip" id="tip2">Cook with Lids On: Cover pots and pans while cooking to retain heat, which reduces cooking time and energy usage.</p>
+                    <p class="tip" id="tip3">Utilize Residual Heat: Turn off the oven or stovetop a few minutes before your food is fully cooked. The residual heat will finish the cooking process.</p>
+                    <p class="tip" id="tip4">Defrost in the Refrigerator: Plan ahead and defrost frozen foods in the refrigerator. This reduces cooking time and helps keep your fridge cooler.</p>
+                    <p class="tip" id="tip5">Opt for Smaller Appliances: Use a microwave, toaster oven, or slow cooker instead of the oven for smaller meals. They use less energy and are more efficient for quick or small-scale cooking.</p>
+                    <p class="tip" id="tip6">Keep Your Fridge and Freezer Full: A full fridge and freezer retain cold better than an empty one. If needed, fill empty spaces with water jugs or ice packs.</p>
+                    <p class="tip" id="tip7">Regular Maintenance: Clean the coils of your refrigerator and check door seals to ensure efficient operation. Dusty coils and poor seals make your fridge work harder and consume more energy.</p>
+                    <p class="tip" id="tip8">Match Pot Size to Burner: Use pots and pans that match the size of your burners to ensure that all the heat is used efficiently, rather than being wasted around the sides.</p>
+                    <p class="tip" id="tip9">Use the Dishwasher Efficiently: Run your dishwasher only when it's full and use the energy-saving mode if available. Skip the heated dry option and let dishes air dry.</p>
+                    <p class="tip" id="tip10">Switch to LED Lighting: Replace incandescent bulbs with LED lights, which use significantly less energy and have a longer lifespan.</p>
+
+                </div>
+            </div>
 
             <div class="wrapper">
                 <div id="game-container">
