@@ -12,7 +12,6 @@ class KitchenQuest {
 
     playGame() {
         document.addEventListener('keydown', (event) => this.walk(event));
-        this.showRules();
         const rules = document.querySelector('.BUTTONPLAYGAME');
         if (rules) {
             rules.addEventListener('click', () => this.startGame());
@@ -84,20 +83,6 @@ class KitchenQuest {
         });
     }
 
-    generateObstacle() {
-        const obstacle = document.createElement('div');
-        obstacle.classList.add(this.obstacleClass);
-        obstacle.style.left = `${this.spawnX}px`;
-        obstacle.style.top = `${this.spawnY}px`;
-        this.container.appendChild(obstacle);
-
-        // Add click event to remove obstacle and increase score
-        obstacle.addEventListener('click', () => {
-            obstacle.remove();
-            this.score++;
-        });
-    }
-
     startSpawning(minTime, maxTime) {
         const spawn = () => {
             this.generateObstacle();
@@ -108,7 +93,6 @@ class KitchenQuest {
     }
 }
 
-// Define the ObstacleSpawner class if it is separate
 class ObstacleSpawner {
     constructor(container, obstacleClass, spawnX, spawnY) {
         this.container = container;
@@ -133,14 +117,11 @@ class ObstacleSpawner {
         obstacle.style.top = `${this.spawnY}px`;
         this.container.appendChild(obstacle);
 
-        // Add click event to remove obstacle and increase score
         obstacle.addEventListener('click', () => {
             obstacle.remove();
-            // Handle score increment if necessary
         });
     }
 }
 
-// Usage example
 const kitchenQuest = new KitchenQuest('spelernaam', 'chef', 'game-container', 'obstacle', 100, 150);
 kitchenQuest.playGame();
