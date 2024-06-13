@@ -136,11 +136,7 @@ export class KitchenQuest {
 
         this.container.appendChild(obstacle);
 
-        const startTime = Date.now();
         obstacle.timerInterval = setInterval(() => {
-            const currentTime = Date.now();
-            const elapsedTime = (currentTime - startTime) / 1000;
-    
             this.score -= 20;
             console.log(`Obstakel! Score verminderd! Huidige score: ${this.score}`);
             },2000)
