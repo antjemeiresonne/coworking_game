@@ -128,15 +128,14 @@ class KitchenQuest {
 
     fixObstacle()
 {
-        // Voeg een event listener om het obstakel te verwijderen
-        obstacle.addEventListener('click', () => {
+            // Voeg een event listener om het obstakel te verwijderen
+            obstacle.addEventListener('click', () => {
             obstacle.remove();
 
             this.score++;
-        });
+            });
 
-
-}
+        }
 
 const kitchenQuest = new KitchenQuest('spelernaam', 'chef', 'game-container');
 
