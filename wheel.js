@@ -9,7 +9,6 @@ const spinMessage = document.getElementById("spin-message");
 
 let hasSpun = false;
 
-
 openWheelButton.addEventListener("click", () => {
     wheelContainer.classList.remove("hidden");
     openWheelButton.classList.add("hidden");
