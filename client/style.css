@@ -87,15 +87,15 @@ footer{
 }
 
 
-/*
+
 .obstacle {
     width: 30px;
     height: 30px;
-    background-image: url('./images/obstacle.png');  //Dit is de CSS-image voor het obstacle
+    background-image: url('./images/obstacles/obstacle.gif');
     background-size: cover;
     position: absolute;
 }
-*/
+
 
 
 
