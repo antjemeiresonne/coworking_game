@@ -114,7 +114,7 @@ class KitchenQuest {
             }
         }
 
-// Gebruik het ObstacleSpawner klasse
+        // Gebruik het ObstacleSpawner klasse
         const container = document.querySelector('.container');
         const obstacleClass = 'obstacle'; 
         const spawnX = 100;
@@ -125,17 +125,16 @@ class KitchenQuest {
 
     }
 
-    fixObstacle()
-{
-        // Voeg een event listener om het obstakel te verwijderen
-        obstacle.addEventListener('click', () => {
+fixObstacle()
+        {
+            // Voeg een event listener om het obstakel te verwijderen
+            obstacle.addEventListener('click', () => {
             obstacle.remove();
 
             this.score++;
-        });
+            });
 
-
-}
+        }
 
 const kitchenQuest = new KitchenQuest('spelernaam', 'chef', 'game-container');
 
