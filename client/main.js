@@ -10,13 +10,7 @@ class KitchenQuest {
         this.spawnY = spawnY;
     }
 
-    playGame() {
-        document.addEventListener('keydown', (event) => this.walk(event));
-        const rules = document.querySelector('.BUTTONPLAYGAME');
-        if (rules) {
-            rules.addEventListener('click', () => this.startGame());
-        }
-    }
+    
 
     startGame() {
         // Game start logic goes here
@@ -28,16 +22,16 @@ class KitchenQuest {
 
     walk(event) {
         switch (event.key) {
-            case 'z': 
+            case 'z':
                 this.chef.style.top = `${Math.max(120, this.chef.offsetTop - this.speed)}px`;
                 break;
-            case 's': 
+            case 's':
                 this.chef.style.top = `${Math.min(this.container.offsetHeight - this.chef.offsetHeight - 120, this.chef.offsetTop + this.speed)}px`;
                 break;
-            case 'q': 
+            case 'q':
                 this.chef.style.left = `${Math.max(120, this.chef.offsetLeft - this.speed)}px`;
                 break;
-            case 'd': 
+            case 'd':
                 this.chef.style.left = `${Math.min(this.container.offsetWidth - this.chef.offsetWidth - 120, this.chef.offsetLeft + this.speed)}px`;
                 break;
             default:
@@ -56,8 +50,8 @@ class KitchenQuest {
         const randomImage = `./images/ingredients/ing${randomImageIndex}.png`;
         ingredient.style.backgroundImage = `url(${randomImage})`;
         ingredient.style.backgroundSize = 'contain';
-        const randomX = Math.floor(Math.random() * (this.container.offsetWidth - 120));
-        const randomY = Math.floor(Math.random() * (this.container.offsetHeight - 120));
+        const randomX = Math.floor(Math.random() * (this.container.offsetWidth - 64));
+        const randomY = Math.floor(Math.random() * (this.container.offsetHeight - 64));
         ingredient.style.left = `${randomX}px`;
         ingredient.style.top = `${randomY}px`;
         this.container.appendChild(ingredient);
@@ -82,15 +76,25 @@ class KitchenQuest {
             }
         });
     }
+
+    playGame() {
+        document.addEventListener('keydown', (event) => this.walk(event));
+        const rules = document.querySelector('.BUTTONPLAYGAME');
+        if (rules) {
+            rules.addEventListener('click', () => this.startGame());
+        }
+        setInterval(() => this.generateIngredient(), 500);
+        setInterval(() => this.checkCollision(), 10);
+    }
 }
 
-    class ObstacleSpawner {
-        constructor(container, obstacleClass, spawnX, spawnY, imagePath) {
-            this.container = container;
-            this.obstacleClass = obstacleClass;
-            this.spawnX = spawnX;
-            this.spawnY = spawnY;
-            this.imagePath = imagePath;
+class ObstacleSpawner {
+    constructor(container, obstacleClass, spawnX, spawnY, imagePath) {
+        this.container = container;
+        this.obstacleClass = obstacleClass;
+        this.spawnX = spawnX;
+        this.spawnY = spawnY;
+        this.imagePath = imagePath;
     }
 
     startSpawning(minTime, maxTime) {
@@ -126,5 +130,3 @@ class KitchenQuest {
 // Usage example
 const kitchenQuest = new KitchenQuest('spelernaam', 'chef', 'game-container', 'obstacle', 100, 150);
 kitchenQuest.playGame();
-kitchenQuest.generateIngredient();
-kitchenQuest.checkCollision();
