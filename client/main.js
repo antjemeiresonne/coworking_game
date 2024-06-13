@@ -106,34 +106,28 @@ class KitchenQuest {
     }
 }
 
-class ObstacleSpawner {
-    constructor(container, obstacleClass, spawnX, spawnY) {
-        this.container = container;
-        this.obstacleClass = obstacleClass;
-        this.spawnX = spawnX;
-        this.spawnY = spawnY;
+// Gebruik het ObstacleSpawner klasse
+        const container = document.querySelector('.container');
+        const obstacleClass = 'obstacle'; 
+        const spawnX = 100;
+        const spawnY = 150;
+
+        const spawner = new ObstacleSpawner(container, obstacleClass, spawnX, spawnY);
+        spawner.startSpawning(1000, 5000);{
+
+
     }
 
-    startSpawning(minTime, maxTime) {
-        const spawn = () => {
-            this.generateObstacle();
-            const randomTime = Math.random() * (maxTime - minTime) + minTime;
-            setTimeout(spawn, randomTime);
-        };
-        spawn();
-    }
-
-    generateObstacle() {
-        const obstacle = document.createElement('div');
-        obstacle.classList.add(this.obstacleClass);
-        obstacle.style.left = `${this.spawnX}px`;
-        obstacle.style.top = `${this.spawnY}px`;
-        this.container.appendChild(obstacle);
-
+    fixObstacle()
+{
+        // Voeg een event listener om het obstakel te verwijderen
         obstacle.addEventListener('click', () => {
             obstacle.remove();
+
+            this.score++;
         });
-    }
+
+
 }
 
 const kitchenQuest = new KitchenQuest('spelernaam', 'chef', 'game-container', 'obstacle', 100, 150);
