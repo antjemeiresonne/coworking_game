@@ -41,7 +41,7 @@ class KitchenQuest {
                 this.chef.style.left = `${Math.min(this.container.offsetWidth - this.chef.offsetWidth - 120, this.chef.offsetLeft + this.speed)}px`;
                 break;
             default:
-                console.log("Invalid key pressed");
+                console.log("Ongeldige toets ingedrukt");
         }
     }
 
@@ -56,8 +56,8 @@ class KitchenQuest {
         const randomImage = `./images/ingredients/ing${randomImageIndex}.png`;
         ingredient.style.backgroundImage = `url(${randomImage})`;
         ingredient.style.backgroundSize = 'contain';
-        const randomX = Math.floor(Math.random() * (this.container.offsetWidth - 48));
-        const randomY = Math.floor(Math.random() * (this.container.offsetHeight - 48));
+        const randomX = Math.floor(Math.random() * (this.container.offsetWidth - 120));
+        const randomY = Math.floor(Math.random() * (this.container.offsetHeight - 120));
         ingredient.style.left = `${randomX}px`;
         ingredient.style.top = `${randomY}px`;
         this.container.appendChild(ingredient);
@@ -125,3 +125,5 @@ class ObstacleSpawner {
 
 const kitchenQuest = new KitchenQuest('spelernaam', 'chef', 'game-container', 'obstacle', 100, 150);
 kitchenQuest.playGame();
+kitchenQuest.generateIngredient();
+kitchenQuest.checkCollision();

@@ -83,6 +83,7 @@ footer{
     background-repeat: no-repeat;
     background-size: contain;
     position: absolute;
+    z-index: 2;
 }
 
 
