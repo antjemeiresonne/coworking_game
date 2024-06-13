@@ -59,6 +59,11 @@ export class KitchenQuest {
         }
     }
 
+    updateScore(){
+        const scorevak = document.querySelector('#currentscore p')
+        scorevak.innerText = `score: ${this.score.toString()}`
+    }
+
     generateIngredient() {
         const ingredient = document.createElement('div');
         ingredient.classList.add('ingredient');
@@ -113,6 +118,7 @@ export class KitchenQuest {
                 if (this.isColliding(this.chef, ingredient)) {
                     ingredient.remove();
                     this.score = this.score + 200;
+                    this.updateScore()
                     console.log(`Collision detected! Huidige score: ${this.score}`);
                 }
             });
@@ -141,6 +147,7 @@ export class KitchenQuest {
 
         obstacle.timerInterval = setInterval(() => {
             this.score -= 20;
+            this.updateScore()
             console.log(`Obstakel! Score verminderd! Huidige score: ${this.score}`);
             },2000)
     }

@@ -3,6 +3,7 @@
     font-family: Inter, sans sans-serif;
     --black: #000000;
     --lightgrey: #f5f5f5;
+    --red: #d30000;
 }
 
 *, *::before, *::after {
@@ -88,13 +89,28 @@ footer{
 
 
 .obstacle {
-    width: 30px;
-    height: 30px;
+    width: 2rem;
+    height: 2rem;
     background-image: url('images/obstacles/obstacle1.gif');
     background-size: cover;
     position: absolute;
 }
 
+#currentscore{
+    height: 4rem;
+    width: 10rem;
+    background-color: var(--lightgrey);
+    border-top-left-radius: 0;
+    opacity: 0.9;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--red);
+    font-weight: 800;
+}
 
 
 
