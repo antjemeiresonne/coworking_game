@@ -1,11 +1,15 @@
 class KitchenQuest {
-    constructor(spelernaam, chef, container) {
+    constructor(spelernaam, chef, container, obstacleClass, spawnX, spawnY) {
         this.spelernaam = spelernaam;
         this.chef = document.getElementById(`${chef}`);
         this.container = document.getElementById(`${container}`);
         this.score = 0;
         //walking speed chef
         this.speed = 1;
+        this.container = container;
+        this.obstacleClass = obstacleClass;
+        this.spawnX = spawnX;
+        this.spawnY = spawnY;
     }
     playGame() {
         document.addEventListener('keydown', (event) => this.walk(event));
@@ -85,45 +89,53 @@ class KitchenQuest {
             }
         })
     }
+
+
     generateObstacle() {
-        // aanpassen naar niet random dus de random functie mag eruit en wordt vervangen door een standaard spawnplaats.
-        //ik heb elk obstacle-listitem een id gegeven met obstacle*nummer* (zie html) dus er een random uikiezen kan door een
-        //random nummer tussen 1 en 6 te genereren en dan het artikel te selecteren met document.queryselector(`li .obstacle${nummer}`)
-        //voeg gerust zelf css toe om te testen, ik doe later wel de definitieve! merci!
-        const obstacle = document.createElement('div');
-        // Obstakel toevoegen aan de div
-        obstacle.classList.add('obstacle');
+                const obstacle = document.createElement('div');
+                // Obstakel toevoegen aan de div
+                obstacle.classList.add(this.obstacleClass);
 
-        // Genereer random coordinates voor het obstakel in de image
-        const randomX = Math.floor(Math.random() * (this.container.offsetWidth - 30));
-        const randomY = Math.floor(Math.random() * (this.container.offsetHeight - 30));
+                // Set de vaste positie van het obstakel
+                obstacle.style.left = `${this.spawnX}px`;
+                obstacle.style.top = `${this.spawnY}px`;
 
-        // Set de positie van het obstakel using de gegenereerde coordinaten
-        obstacle.style.left = `${randomX}px`;
-        obstacle.style.top = `${randomY}px`;
+                // Voeg het obstakel toe aan de container
+                this.container.appendChild(obstacle);
+            }
 
-        // Voeg het obstakel toe aan de image
-        this.container.appendChild(obstacle);
+            startSpawning(minTime, maxTime) {
+                const spawn = () => {
+                    this.generateObstacle();
+                    const randomTime = Math.random() * (maxTime - minTime) + minTime;
+                    setTimeout(spawn, randomTime);
+                };
+                spawn();
+            }
+        }
+
+// Gebruik het ObstacleSpawner klasse
+        const container = document.querySelector('.container');
+        const obstacleClass = 'obstacle'; 
+        const spawnX = 100;
+        const spawnY = 150;
+
+        const spawner = new ObstacleSpawner(container, obstacleClass, spawnX, spawnY);
+        spawner.startSpawning(1000, 5000);{
 
 
     }
-    fixObstacle() {
+
+    fixObstacle()
+{
         // Voeg een event listener om het obstakel te verwijderen
         obstacle.addEventListener('click', () => {
             obstacle.remove();
 
             this.score++;
         });
-    }
 
 
-
-    showWheel() {
-        //code to show the wheel
-    }
-    turnWheel() {
-        //code to make the wheel turn
-    }
 }
 
 const kitchenQuest = new KitchenQuest('spelernaam', 'chef', 'game-container');

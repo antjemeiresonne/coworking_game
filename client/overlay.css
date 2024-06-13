@@ -1,4 +1,4 @@
-.overlay {
+.overlay{
     position: fixed;
     top: 0;
     left: 0;
@@ -49,3 +49,4 @@
     border: 2px solid var(--black);
     background-color: var(--lightgrey);
 }
+
