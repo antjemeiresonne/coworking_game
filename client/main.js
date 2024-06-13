@@ -115,6 +115,7 @@ class ObstacleSpawner {
         this.obstacleClass = obstacleClass;
         this.spawnX = spawnX;
         this.spawnY = spawnY;
+        this.imagePath = imagePath;
     }
 
     startSpawning(minTime, maxTime) {
@@ -131,6 +132,17 @@ class ObstacleSpawner {
         obstacle.classList.add(this.obstacleClass);
         obstacle.style.left = `${this.spawnX}px`;
         obstacle.style.top = `${this.spawnY}px`;
+        obstacle.style.backgroundImage = `url(${this.imagePath})`;
+        obstacle.style.backgroundSize = 'contain';
+        obstacle.style.backgroundRepeat = 'no-repeat';
+        obstacle.style.backgroundPosition = 'center';
+
+        obstacle.style.position = 'absolute';
+        obstacle.style.left = `calc(50% - 50px)`;
+        obstacle.style.top = `calc(50% - 50px)`;
+        obstacle.style.width = '100px';
+        obstacle.style.height = '100px';
+
         this.container.appendChild(obstacle);
 
         // Add click event to remove obstacle and increase score
@@ -139,7 +151,11 @@ class ObstacleSpawner {
             // Handle score increment if necessary
         });
     }
+
 }
+
+const spawner = new ObstacleSpawner('gameContainer', 'obstacle-class', 0, 0, 'client/images/obstacle.gif');
+spawner.startSpawning(1000, 3000);
 
 // Usage example
 const kitchenQuest = new KitchenQuest('spelernaam', 'chef', 'game-container', 'obstacle', 100, 150);
