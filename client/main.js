@@ -1,4 +1,5 @@
 class KitchenQuest {
+    obstaclespawner;
     constructor(spelernaam, chef, container, obstacleClass, spawnX, spawnY) {
         this.spelernaam = spelernaam;
         this.chef = document.getElementById(chef);
@@ -83,6 +84,7 @@ class KitchenQuest {
     }
 
     playGame() {
+        this.obstaclespawner = new ObstacleSpawner(this.container)
         document.addEventListener('keydown', (event) => this.walk(event));
         const rules = document.querySelector('.BUTTONPLAYGAME');
         if (rules) {
@@ -90,16 +92,13 @@ class KitchenQuest {
         }
         setInterval(() => this.generateIngredient(), 500);
         setInterval(() => this.checkCollision(), 10);
+        setInterval(() => this.obstaclespawner.generateObstacle(), 500);
     }
 }
 
 class ObstacleSpawner {
-    constructor(container, obstacleClass, spawnX, spawnY, imagePath) {
+    constructor(container) {
         this.container = container;
-        this.obstacleClass = obstacleClass;
-        this.spawnX = spawnX;
-        this.spawnY = spawnY;
-        this.imagePath = imagePath;
     }
 
     startSpawning(minTime, maxTime) {
@@ -113,7 +112,10 @@ class ObstacleSpawner {
 
     generateObstacle() {
         const obstacle = document.createElement('div');
-        obstacle.classList.add(this.obstacleClass);
+        obstacle.classList.add('obstacle');
+        obstacle.addEventListener('click', () =>{
+            obstacle.remove();
+        });
         const spawnX = Math.floor(Math.random() * (this.container.offsetWidth - 50));
         const spawnY = Math.floor(Math.random() * (this.container.offsetHeight - 50));
         obstacle.style.left = `${spawnX}px`;
@@ -126,11 +128,14 @@ class ObstacleSpawner {
 
 
         this.container.appendChild(obstacle);
-
         // Add click event to remove obstacle and increase score
-        obstacle.addEventListener('click', () => {
-            obstacle.remove();
-            // Handle score increment if necessary
+    }
+    checkClicks() {
+        const obstacles = document.querySelectorAll('.obstacle');
+        obstacles.forEach(obstacle => {
+                obstacle.addEventListener('click', () =>{
+                    obstacle.remove();
+                });
         });
     }
 }
