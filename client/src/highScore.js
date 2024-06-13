@@ -4,8 +4,9 @@ const li = document.createElement("li")
 
     li.innerHTML = `
     <p>${score.name}</p>
+    <p>${score.score}</p>
     `
     return li
 }
 
-//todo: export
+export const addHighscore = (highscore, container) => container.appendChild(showHighscore(highscore))

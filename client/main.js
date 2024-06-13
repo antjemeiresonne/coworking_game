@@ -1,5 +1,7 @@
 import { FormValidator } from "./src/formValidator.js";
 import { KitchenQuest } from "./src/gameFunctions.js";
+import { addHighscore } from "./src/highScore.js";
+import { getScores, postHighscore } from "./src/scoreService.js";
 
 const kitchenQuest = new KitchenQuest('chef', 'game-container');
 console.log(kitchenQuest.chef)
@@ -41,11 +43,19 @@ playButtons.forEach(button => {
             kitchenQuest.stopIngredientGeneration()
             kitchenQuest.stopObstacleGeneration()
             document.querySelector('#score').innerText = kitchenQuest.score.toString()
-
+            const data = {
+                naam: kitchenQuest.spelernaam,
+                score: kitchenQuest.score
+            }
+            postHighscore(data)
         }, kitchenQuest.time)
 
     });
     document.addEventListener('keydown', (event) => {
         kitchenQuest.walk(event)
     })
+    const highscorelist = document.querySelector('ul.highscores')
+    getScores()
+        .then(scores => scores.forEach(score => addHighscore(score, highscorelist)))
+        .catch(e => console.error(e))
 });
