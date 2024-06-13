@@ -1,5 +1,4 @@
-import { wheelContainer, drawWheel } from './wheel.js';
-
+const overlayEnd = document.getElementById("end-game")
 
 export class KitchenQuest {
 
@@ -23,9 +22,6 @@ export class KitchenQuest {
         console.log(`gekozen level is ${this.level}`)
     }
 
-    get level() {
-        return this.#level
-    }
 
 
     // setLevel(level) {
@@ -33,12 +29,7 @@ export class KitchenQuest {
         
     // }
 
-    startTimer() {
-        setTimeout(function () {
-            wheelContainer.style.display = 'flex'
-            drawWheel()
-        }, 30000)
-    }
+
 
     walk(event) {
         switch (event.key) {
