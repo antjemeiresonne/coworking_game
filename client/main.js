@@ -79,6 +79,7 @@ class KitchenQuest {
             if (this.isColliding(this.chef, ingredient)) {
                 ingredient.remove();
                 this.score++;
+                // Update score display if necessary
             }
         });
     }
@@ -90,6 +91,7 @@ class KitchenQuest {
         obstacle.style.top = `${this.spawnY}px`;
         this.container.appendChild(obstacle);
 
+        // Add click event to remove obstacle and increase score
         obstacle.addEventListener('click', () => {
             obstacle.remove();
             this.score++;
@@ -106,28 +108,39 @@ class KitchenQuest {
     }
 }
 
-// Gebruik het ObstacleSpawner klasse
-        const container = document.querySelector('.container');
-        const obstacleClass = 'obstacle'; 
-        const spawnX = 100;
-        const spawnY = 150;
-
-        const spawner = new ObstacleSpawner(container, obstacleClass, spawnX, spawnY);
-        spawner.startSpawning(1000, 5000);{
-
+// Define the ObstacleSpawner class if it is separate
+class ObstacleSpawner {
+    constructor(container, obstacleClass, spawnX, spawnY) {
+        this.container = container;
+        this.obstacleClass = obstacleClass;
+        this.spawnX = spawnX;
+        this.spawnY = spawnY;
     }
 
-    fixObstacle()
-{
-        // Voeg een event listener om het obstakel te verwijderen
+    startSpawning(minTime, maxTime) {
+        const spawn = () => {
+            this.generateObstacle();
+            const randomTime = Math.random() * (maxTime - minTime) + minTime;
+            setTimeout(spawn, randomTime);
+        };
+        spawn();
+    }
+
+    generateObstacle() {
+        const obstacle = document.createElement('div');
+        obstacle.classList.add(this.obstacleClass);
+        obstacle.style.left = `${this.spawnX}px`;
+        obstacle.style.top = `${this.spawnY}px`;
+        this.container.appendChild(obstacle);
+
+        // Add click event to remove obstacle and increase score
         obstacle.addEventListener('click', () => {
             obstacle.remove();
-
-            this.score++;
+            // Handle score increment if necessary
         });
-
-
+    }
 }
 
+// Usage example
 const kitchenQuest = new KitchenQuest('spelernaam', 'chef', 'game-container', 'obstacle', 100, 150);
 kitchenQuest.playGame();
